@@ -11,8 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.bookship.Class.Details;
-import com.example.android.bookship.Data.BookContract;
 import com.example.android.bookship.Data.BookContract.BookEntry;
 import com.example.android.bookship.Data.BookDbHelper;
 import com.example.android.bookship.Loader.DetailLoader;

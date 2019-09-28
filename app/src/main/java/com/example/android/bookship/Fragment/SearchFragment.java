@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SearchFragment extends Fragment implements android.support.v4.app.LoaderManager.LoaderCallbacks<List<Books>> {
+public class SearchFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Books>> {
 
     private View rootView;
 
@@ -159,7 +161,7 @@ public class SearchFragment extends Fragment implements android.support.v4.app.L
         } else {
             // Start the AsyncTask to fetch the earthquake data
             // Get a reference to the LoaderManager, in order to interact with loaders.
-            android.support.v4.app.LoaderManager loaderManager = getLoaderManager();
+            LoaderManager loaderManager = getLoaderManager();
 
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
@@ -171,13 +173,13 @@ public class SearchFragment extends Fragment implements android.support.v4.app.L
     }
 
     @Override
-    public android.support.v4.content.Loader<List<Books>> onCreateLoader(int id, Bundle urls) {
+    public Loader<List<Books>> onCreateLoader(int id, Bundle urls) {
         // Create a new loader for the given URL
         return new BookLoader(getActivity(), BOOK_REQUEST_URL);
     }
 
     @Override
-    public void onLoadFinished(android.support.v4.content.Loader<List<Books>> loader, List<Books> books) {
+    public void onLoadFinished(Loader<List<Books>> loader, List<Books> books) {
 
         // Clear the adapter of previous earthquake data
         mAdapter.clear();
@@ -198,7 +200,7 @@ public class SearchFragment extends Fragment implements android.support.v4.app.L
     }
 
     @Override
-    public void onLoaderReset(android.support.v4.content.Loader<List<Books>> loader) {
+    public void onLoaderReset(Loader<List<Books>> loader) {
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }
@@ -217,7 +219,7 @@ public class SearchFragment extends Fragment implements android.support.v4.app.L
         if (networkInfo != null && networkInfo.isConnected()) {
             // Start the AsyncTask to fetch the earthquake data
             // Get a reference to the LoaderManager, in order to interact with loaders.
-            android.support.v4.app.LoaderManager loaderManager = getLoaderManager();
+            LoaderManager loaderManager = getLoaderManager();
 
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid

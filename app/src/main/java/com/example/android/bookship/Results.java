@@ -7,8 +7,8 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.example.android.bookship.Adapter.BookAdapter;
 import com.example.android.bookship.Class.Books;
-import com.example.android.bookship.Loader.BookLoader;
 import com.example.android.bookship.Loader.ResultsLoader;
 
 import java.util.ArrayList;

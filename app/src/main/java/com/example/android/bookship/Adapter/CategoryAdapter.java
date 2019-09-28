@@ -1,9 +1,9 @@
 package com.example.android.bookship.Adapter;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.android.bookship.Fragment.FavouriteFragment;
 import com.example.android.bookship.Fragment.GenresFragment;

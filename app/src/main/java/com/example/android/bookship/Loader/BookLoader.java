@@ -1,7 +1,7 @@
 package com.example.android.bookship.Loader;
 
 import android.content.Context;
-import android.support.v4.content.AsyncTaskLoader;
+import androidx.loader.content.AsyncTaskLoader;
 
 import com.example.android.bookship.Class.Books;
 import com.example.android.bookship.Queryclass;
