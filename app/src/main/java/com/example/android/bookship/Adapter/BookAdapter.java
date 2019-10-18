@@ -68,7 +68,7 @@ public class BookAdapter extends ArrayAdapter<Books> {
             authornameTextView.setText(str);
         }
         // Find the TextView in the list_item.xml layout with the ID desccription
-        TextView descriptionTextView = (TextView) bookListView.findViewById(R.id.desccription);
+        TextView descriptionTextView = (TextView) bookListView.findViewById(R.id.description);
 
         if(currentBook.getbookDescription() == null)
             descriptionTextView.setText("No description provided.");

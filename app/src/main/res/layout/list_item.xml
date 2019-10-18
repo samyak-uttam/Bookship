@@ -6,7 +6,6 @@
     android:background="@color/colorPrimary">
 
     <androidx.cardview.widget.CardView
-        cardBackgroundColor="#FFFFFFFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -30,10 +29,6 @@
                 android:id="@+id/text_container"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/list_item_height"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@id/image"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -59,7 +54,7 @@
                     tools:text="stephenie meyer" />
 
                 <TextView
-                    android:id="@+id/desccription"
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -72,6 +67,7 @@
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
                     android:numStars="5" />
             </LinearLayout>
         </LinearLayout>

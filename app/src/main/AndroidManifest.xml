@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/images"
@@ -15,11 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".Activity.OnDeviceDetailsActivity"
+            android:parentActivityName=".Activity.HomeActivity"/>
         <activity
             android:name=".Results"
             android:parentActivityName=".Activity.MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -36,12 +40,13 @@
         </activity>
         <activity
             android:name=".Activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.DetailActivity"
             android:label="Details"
             android:parentActivityName=".Activity.MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

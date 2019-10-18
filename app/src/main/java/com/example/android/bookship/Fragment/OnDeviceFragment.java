@@ -3,6 +3,7 @@ package com.example.android.bookship.Fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -25,6 +26,8 @@ import com.example.android.bookship.R;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +37,7 @@ public class OnDeviceFragment extends Fragment {
     private File dir;
     private static int REQUEST_PERMISSION = 1;
 
-    private ArrayList<File> bookFiles;
+    public static ArrayList<File> bookFiles;
     private ArrayList<LocalBook> books;
     private RecyclerView mRecyclerView;
     private OnDeviceAdapter mOnDeviceAdapter;
@@ -91,7 +94,7 @@ public class OnDeviceFragment extends Fragment {
     }
 
     private ArrayList<File> getFiles(java.io.File dir) {
-        java.io.File[] files = dir.listFiles();
+        final java.io.File[] files = dir.listFiles();
 
         if(files != null) {
             for (java.io.File file : files) {
@@ -100,12 +103,12 @@ public class OnDeviceFragment extends Fragment {
                 } else {
                     if (file.getName().endsWith(".pdf")) {
                         bookFiles.add(file);
-                        books.add(new LocalBook(file.getName().split(".pdf")[0], R.drawable.drama));
+                        books.add(new LocalBook(file.getName().split(".pdf")[0],
+                                R.drawable.fiction, new Date(file.lastModified())));
                     }
                 }
             }
         }
         return bookFiles;
     }
-
 }
