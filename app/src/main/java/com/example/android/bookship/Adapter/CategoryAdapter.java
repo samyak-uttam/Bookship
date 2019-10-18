@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.android.bookship.Fragment.FavouriteFragment;
 import com.example.android.bookship.Fragment.GenresFragment;
+import com.example.android.bookship.Fragment.OnDeviceFragment;
 import com.example.android.bookship.Fragment.SearchFragment;
 
 public class CategoryAdapter extends FragmentPagerAdapter {
@@ -28,14 +29,16 @@ public class CategoryAdapter extends FragmentPagerAdapter {
             return new GenresFragment();
         } else if(position == 1) {
             return new SearchFragment();
-        } else {
+        } else if(position == 2){
             return new FavouriteFragment();
+        } else{
+            return new OnDeviceFragment();
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -44,8 +47,10 @@ public class CategoryAdapter extends FragmentPagerAdapter {
           return "Genres";
         } else if(position == 1){
             return "Search";
-        } else {
+        } else if(position == 2){
             return "Favourites";
+        } else{
+            return "On Device";
         }
     }
 }

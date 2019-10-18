@@ -1,7 +1,9 @@
-package com.example.android.bookship;
+package com.example.android.bookship.Activity;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.android.bookship.R;
 import com.google.android.material.tabs.TabLayout;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Find the tab layout that shows the tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         // Connect the tab layout with the view pager. This will
         //   1. Update the tab layout when the view pager is swiped

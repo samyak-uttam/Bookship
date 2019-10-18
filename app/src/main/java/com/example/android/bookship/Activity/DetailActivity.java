@@ -1,4 +1,4 @@
-package com.example.android.bookship;
+package com.example.android.bookship.Activity;
 
 import android.app.LoaderManager;
 import android.content.ContentValues;
@@ -11,6 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+
+import com.example.android.bookship.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

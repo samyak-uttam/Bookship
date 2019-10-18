@@ -23,7 +23,7 @@ import com.example.android.bookship.Adapter.FavouriteAdapter;
 import com.example.android.bookship.Class.Favourites;
 import com.example.android.bookship.Data.BookContract.BookEntry;
 import com.example.android.bookship.Data.BookDbHelper;
-import com.example.android.bookship.DetailActivity;
+import com.example.android.bookship.Activity.DetailActivity;
 import com.example.android.bookship.R;
 
 import java.util.ArrayList;

@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.android.bookship.Activity.DetailActivity;
 import com.example.android.bookship.Adapter.BookAdapter;
 import com.example.android.bookship.Class.Books;
 import com.example.android.bookship.Loader.ResultsLoader;
@@ -128,7 +129,7 @@ public class Results extends AppCompatActivity implements LoaderCallbacks<List<B
         // Set empty state text to display "No books found."
         mEmptyStateTextView.setText(R.string.no_books);
 
-        // Clear the adapter of previous earthquake data
+        // Clear the adapter of previous books data
         mAdapter.clear();
 
         // If there is a valid list of {@link Book}s, then add them to the adapter's.

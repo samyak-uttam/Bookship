@@ -22,7 +22,7 @@ import android.widget.TextView;
 import com.example.android.bookship.Adapter.BookAdapter;
 import com.example.android.bookship.Loader.BookLoader;
 import com.example.android.bookship.Class.Books;
-import com.example.android.bookship.DetailActivity;
+import com.example.android.bookship.Activity.DetailActivity;
 import com.example.android.bookship.R;
 
 import java.util.ArrayList;

@@ -1,9 +1,11 @@
-package com.example.android.bookship;
+package com.example.android.bookship.Activity;
 
 import android.content.Intent;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.android.bookship.R;
 
 public class HomeActivity extends AppCompatActivity {
 
