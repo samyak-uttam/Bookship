@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_genres"
+        android:icon="@drawable/ic_class_black"
+        android:title="Genres" />
+
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search_black"
+        android:title="Search" />
+
+    <item
+        android:id="@+id/nav_favourites"
+        android:icon="@drawable/ic_favorite_black"
+        android:title="Favourites" />
+
+    <item
+        android:id="@+id/nav_ondevice"
+        android:icon="@drawable/ic_local_library_black"
+        android:title="On Device" />
+
+
+</menu>

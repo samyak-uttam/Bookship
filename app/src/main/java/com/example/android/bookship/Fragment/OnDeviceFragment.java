@@ -3,12 +3,12 @@ package com.example.android.bookship.Fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,7 +26,6 @@ import com.example.android.bookship.R;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -48,8 +47,11 @@ public class OnDeviceFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_on_device, container, false);
 
-        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                REQUEST_PERMISSION);
+        if(ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    REQUEST_PERMISSION);
+        }
 
         books = new ArrayList<>();
         bookFiles = new ArrayList<>();
@@ -104,7 +106,7 @@ public class OnDeviceFragment extends Fragment {
                     if (file.getName().endsWith(".pdf")) {
                         bookFiles.add(file);
                         books.add(new LocalBook(file.getName().split(".pdf")[0],
-                                R.drawable.fiction, new Date(file.lastModified())));
+                                new Date(file.lastModified())));
                     }
                 }
             }

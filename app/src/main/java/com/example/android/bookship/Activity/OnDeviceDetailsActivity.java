@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,6 +29,7 @@ public class OnDeviceDetailsActivity extends AppCompatActivity {
     private TextView bookNameTV;
     private File curBookFile;
     private int REQUEST_CODE = 1;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,8 @@ public class OnDeviceDetailsActivity extends AppCompatActivity {
 
         pdfView = findViewById(R.id.pdf_view);
 
-        curBookFile = OnDeviceFragment.bookFiles.
-                get(getIntent().getIntExtra("index", -1));
+        position = getIntent().getIntExtra("index", -1);
+        curBookFile = OnDeviceFragment.bookFiles.get(position);
 
         bookNameTV = findViewById(R.id.book_name);
         bookNameTV.setText(curBookFile.getName().split(".pdf")[0]);
@@ -78,6 +80,10 @@ public class OnDeviceDetailsActivity extends AppCompatActivity {
                     item.setChecked(true);
                 }
                 return true;
+            case R.id.fullScreenMode:
+                Intent intent = new Intent(OnDeviceDetailsActivity.this, FullScreenActivity.class);
+                intent.putExtra("index", position);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
