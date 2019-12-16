@@ -12,7 +12,6 @@
     <string name="empty_fav">No Favourites.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Dialog message to ask the user to confirm deleting the current book [CHAR LIMIT=NONE] -->
     <string name="delete_dialog_msg">Delete this book?</string>

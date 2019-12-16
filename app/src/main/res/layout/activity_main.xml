@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context="com.example.android.bookship.Activity.MainActivity">
+    tools:context="com.first.bookapp.bookship.my.first.bookapp.bookship.Activity.MainActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"

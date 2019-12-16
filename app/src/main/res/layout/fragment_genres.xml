@@ -7,4 +7,4 @@
     android:horizontalSpacing="8dp"
     android:numColumns="2"
     android:stretchMode="columnWidth"
-    tools:context=".Fragment.GenresFragment" />
+    tools:context="my.first.bookapp.bookship.Fragment.GenresFragment" />

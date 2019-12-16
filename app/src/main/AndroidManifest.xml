@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.android.bookship">
+    package="com.first.bookapp.bookship">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -10,29 +10,29 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/images"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".Activity.FullScreenActivity"
+            android:name="my.first.bookapp.bookship.Activity.FullScreenActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".Activity.OnDeviceDetailsActivity"
-            android:parentActivityName=".Activity.HomeActivity" />
+            android:name="my.first.bookapp.bookship.Activity.OnDeviceDetailsActivity"
+            android:parentActivityName="my.first.bookapp.bookship.Activity.HomeActivity" />
         <activity
-            android:name=".Results"
-            android:parentActivityName=".Activity.MainActivity">
+            android:name="my.first.bookapp.bookship.Results"
+            android:parentActivityName="my.first.bookapp.bookship.Activity.MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.MainActivity" />
+                android:value="my.first.bookapp.bookship.Activity.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity.HomeActivity"
+            android:name="my.first.bookapp.bookship.Activity.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,18 +41,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.MainActivity"
+            android:name="my.first.bookapp.bookship.Activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.DetailActivity"
+            android:name="my.first.bookapp.bookship.Activity.DetailActivity"
             android:label="Details"
-            android:parentActivityName=".Activity.MainActivity">
+            android:parentActivityName="my.first.bookapp.bookship.Activity.MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.MainActivity" />
+                android:value="my.first.bookapp.bookship.Activity.MainActivity" />
         </activity>
     </application>
 

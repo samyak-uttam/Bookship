@@ -26,7 +26,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:padding="16dp"
-                    tools:context=".Activity.DetailActivity">
+                    tools:context="my.first.bookapp.bookship.Activity.DetailActivity">
 
                     <ImageView
                         android:id="@+id/book_image"
