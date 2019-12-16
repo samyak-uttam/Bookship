@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp">
+        android:layout_margin="6dp">
 
         <com.github.barteksc.pdfviewer.PDFView
             android:id="@+id/full_screen_pdf_view"

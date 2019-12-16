@@ -2,34 +2,28 @@ package com.example.android.bookship.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.ParcelFileDescriptor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.bookship.Activity.OnDeviceDetailsActivity;
-import com.example.android.bookship.Class.LocalBook;
-import com.example.android.bookship.Fragment.OnDeviceFragment;
 import com.example.android.bookship.R;
-import com.shockwave.pdfium.PdfDocument;
-import com.shockwave.pdfium.PdfiumCore;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class OnDeviceAdapter extends RecyclerView.Adapter<OnDeviceAdapter.OnDeviceViewHolder> {
 
-    private ArrayList<LocalBook> mLocalBooks;
+    private ArrayList<File> mLocalBooks;
     private Context mContext;
 
-    public OnDeviceAdapter(ArrayList<LocalBook> mLocalBooks, Context mContext) {
+    public OnDeviceAdapter(ArrayList<File> mLocalBooks, Context mContext) {
         this.mLocalBooks = mLocalBooks;
         this.mContext = mContext;
     }
@@ -42,12 +36,14 @@ public class OnDeviceAdapter extends RecyclerView.Adapter<OnDeviceAdapter.OnDevi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OnDeviceViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final OnDeviceViewHolder holder, final int position) {
 
-        final LocalBook book = mLocalBooks.get(position);
+        final File book = mLocalBooks.get(position);
+        Date lastModifiedDate = new Date(book.lastModified());
+        holder.modified.setText(formatDate(lastModifiedDate) + ", " + formatTime(lastModifiedDate));
 
-        setImage(Uri.fromFile(OnDeviceFragment.bookFiles.get(position)), holder);
-        holder.bookName.setText(book.getBookName());
+        holder.bookName.setText(book.getName().split(".pdf")[0]);
+        holder.fileSize.setText(String.format("%.2f", book.length() / (1024.0 * 1024.0)) + " mb");
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,34 +61,27 @@ public class OnDeviceAdapter extends RecyclerView.Adapter<OnDeviceAdapter.OnDevi
 
     public static class OnDeviceViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView bookImage;
+        TextView modified;
         TextView bookName;
+        TextView fileSize;
         View rootView;
 
         public OnDeviceViewHolder(@NonNull View itemView) {
             super(itemView);
             rootView = itemView;
-            bookImage = itemView.findViewById(R.id.book_image);
+            modified = itemView.findViewById(R.id.file_path);
             bookName = itemView.findViewById(R.id.book_name);
+            fileSize = itemView.findViewById(R.id.file_size);
         }
     }
 
-    void setImage(Uri pdfUri, OnDeviceViewHolder holder) {
-        int pageNumber = 0;
-        PdfiumCore pdfiumCore = new PdfiumCore(mContext);
-        try {
-            ParcelFileDescriptor fd = mContext.getContentResolver().openFileDescriptor(pdfUri, "r");
-            PdfDocument pdfDocument = pdfiumCore.newDocument(fd);
-            pdfiumCore.openPage(pdfDocument, pageNumber);
-            int width = 200;
-            int height = 300;
-            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-            pdfiumCore.renderPageBitmap(pdfDocument, bmp, pageNumber, 0, 0, width, height);
-            holder.bookImage.setImageBitmap(bmp);
+    private String formatDate(Date dateObject) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
+        return dateFormat.format(dateObject);
+    }
 
-            pdfiumCore.closeDocument(pdfDocument); // important!
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    private String formatTime(Date dateObject) {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        return timeFormat.format(dateObject);
     }
 }

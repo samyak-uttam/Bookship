@@ -145,7 +145,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/home/samyak_uttam/Downloads/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_local_library_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/home/samyak_uttam/Downloads/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_filter_list_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -155,7 +155,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_local_library_black" />
+                            <entry key="outputName" value="ic_filter_list_black" />
                             <entry key="sourceFile" value="$USER_HOME$/C:\Users\samya\OneDrive\Desktop\heart.svg" />
                           </map>
                         </option>

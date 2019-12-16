@@ -23,12 +23,15 @@ public class FullScreenActivity extends AppCompatActivity {
 
         pdfView = findViewById(R.id.full_screen_pdf_view);
 
-        curBookFile = OnDeviceFragment.bookFiles
+        curBookFile = OnDeviceFragment.books
                 .get(getIntent().getIntExtra("index", -1));
+
+        boolean isNightMode = getIntent().getBooleanExtra("isNightMode", false);
 
         pdfView.fromFile(curBookFile)
                 .enableSwipe(true)
                 .scrollHandle(new DefaultScrollHandle(this))
+                .nightMode(isNightMode)
                 .load();
     }
 }

@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/rename"
+        android:title="Rename" />
+
+    <item
         android:id="@+id/delete"
         android:title="Delete" />
 

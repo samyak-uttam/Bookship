@@ -30,6 +30,8 @@
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:paddingTop="8dp"
+                    android:maxLines="3"
+                    android:ellipsize="end"
                     android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:textSize="25sp"

@@ -3,13 +3,15 @@ package com.example.android.bookship.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
@@ -30,6 +32,7 @@ public class OnDeviceDetailsActivity extends AppCompatActivity {
     private File curBookFile;
     private int REQUEST_CODE = 1;
     private int position;
+    private boolean isNightModeSel = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class OnDeviceDetailsActivity extends AppCompatActivity {
         pdfView = findViewById(R.id.pdf_view);
 
         position = getIntent().getIntExtra("index", -1);
-        curBookFile = OnDeviceFragment.bookFiles.get(position);
+        curBookFile = OnDeviceFragment.books.get(position);
 
         bookNameTV = findViewById(R.id.book_name);
         bookNameTV.setText(curBookFile.getName().split(".pdf")[0]);
@@ -65,9 +68,10 @@ public class OnDeviceDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.rename:
+                renameBook();
+                return true;
             case R.id.delete:
-                ActivityCompat.requestPermissions((Activity) OnDeviceDetailsActivity.this,
-                        new String[] {android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 // Pop up confirmation dialog for deletion
                 showDeleteConfirmationDialog();
                 return true;
@@ -76,16 +80,62 @@ public class OnDeviceDetailsActivity extends AppCompatActivity {
                 pdfView.loadPages();
                 if(item.isChecked()) {
                     item.setChecked(false);
+                    isNightModeSel = false;
                 } else {
                     item.setChecked(true);
+                    isNightModeSel = true;
                 }
                 return true;
             case R.id.fullScreenMode:
                 Intent intent = new Intent(OnDeviceDetailsActivity.this, FullScreenActivity.class);
                 intent.putExtra("index", position);
+                intent.putExtra("isNightMode", isNightModeSel);
                 startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void renameBook() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Rename");
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View view = inflater.inflate(R.layout.rename_layout, null);
+
+        final EditText text = view.findViewById(R.id.rename_et);
+        text.setText(curBookFile.getName().split(".pdf")[0]);
+
+        builder.setView(view)
+        .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                File dir = new File(curBookFile.getAbsolutePath());
+                boolean isRenamed = curBookFile.renameTo(new File(dir.getParent(),
+                        text.getText().toString().trim() + ".pdf"));
+
+                if(isRenamed) {
+                    Toast.makeText(OnDeviceDetailsActivity.this, getString(R.string.rename_book_successful),
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(OnDeviceDetailsActivity.this, getString(R.string.rename_book_failed),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                finish();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                // User clicked the "Cancel" button, so dismiss the dialog
+                // and continue reading the book.
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.create();
+        builder.show();
     }
 
     private void showDeleteConfirmationDialog() {
@@ -121,8 +171,7 @@ public class OnDeviceDetailsActivity extends AppCompatActivity {
         });
 
         // Create and show the AlertDialog
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+        builder.create();
+        builder.show();
     }
-
 }

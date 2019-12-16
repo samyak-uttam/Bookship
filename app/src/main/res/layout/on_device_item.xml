@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/list_item_height"
+    android:layout_height="116dp"
     android:background="@color/colorPrimary"
     android:paddingBottom="1dp">
 
@@ -18,30 +18,74 @@
 
             <ImageView
                 android:id="@+id/book_image"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:paddingLeft="8dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:scaleType="fitXY"
-                tools:src="@drawable/download" />
+                android:src="@drawable/book" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/list_item_height"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp">
 
                 <TextView
                     android:id="@+id/book_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:textSize="20sp"
                     android:maxLines="2"
                     android:textColor="#212121"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:text="BookName" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="#424242"
+                        android:text="Size: " />
+
+                    <TextView
+                        android:id="@+id/file_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        tools:text="0"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="#424242"
+                        android:text="Modified: " />
+
+                    <TextView
+                        android:id="@+id/file_path"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/black"
+                        tools:text="0"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

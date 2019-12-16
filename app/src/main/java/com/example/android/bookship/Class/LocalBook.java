@@ -1,7 +1,5 @@
 package com.example.android.bookship.Class;
 
-import android.net.Uri;
-
 import java.util.Date;
 
 public class LocalBook {
@@ -10,10 +8,13 @@ public class LocalBook {
 
     private Date lastModified;
 
+    private int pageCount;
 
-    public LocalBook(String bookName, Date lastModified) {
+
+    public LocalBook(String bookName, Date lastModified, int pageCount) {
         this.bookName = bookName;
         this.lastModified = lastModified;
+        this.pageCount = pageCount;
     }
 
     public String getBookName() {
@@ -22,5 +23,9 @@ public class LocalBook {
 
     public Date getLastModified() {
         return lastModified;
+    }
+
+    public int getPageCount() {
+        return pageCount;
     }
 }

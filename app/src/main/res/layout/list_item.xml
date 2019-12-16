@@ -23,7 +23,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/download" />
+                tools:src="@drawable/download" />
 
             <LinearLayout
                 android:id="@+id/text_container"
